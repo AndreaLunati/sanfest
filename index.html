@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SanFest | Mappa della Notte Bianca</title>
+  <meta name="description" content="Scopri bar, bancarelle, street food e spettacoli del SanFest a Viale Pavia, Lodi.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+  <link rel="stylesheet" href="assets/common.css">
+  <link rel="stylesheet" href="assets/public.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+  <script src="assets/public.js" defer></script>
+</head>
+<body class="public-body">
+  <div id="map" aria-label="Mappa delle attività SanFest"></div>
+  <div class="visitor-top">
+    <div class="visitor-brand"><div><strong>SAN<span>FEST</span></strong></div><p>La Notte si accende · Viale Pavia, Lodi</p></div>
+    <div class="search-row"><label for="ricerca" class="sr-only">Cerca attività</label><input id="ricerca" type="search" placeholder="⌕ Cerca bar, bancarelle, attività..."></div>
+    <div id="filtri" class="filters" aria-label="Filtra per categoria"></div>
+  </div>
+  <section id="pannello-lista" class="results-panel" aria-label="Elenco attività"><div class="results-head"><strong>Scopri il SanFest</strong><span id="conteggio">0 attività</span></div><div id="lista" class="results-list"></div></section>
+  <section id="scheda" class="detail-panel" aria-label="Dettagli attività" hidden></section>
+  <div id="errore" class="map-error" role="status" hidden>Impossibile caricare la cartografia. Controlla la connessione e riprova.</div>
+  <div class="visitor-footer">SanFest · Mappa informativa · Le attività possono subire variazioni</div>
+</body>
+</html>

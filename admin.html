@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SanFest | Gestione attività</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+  <link rel="stylesheet" href="assets/common.css">
+  <link rel="stylesheet" href="assets/admin.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+  <script src="assets/admin.js" defer></script>
+</head>
+<body class="admin-body">
+  <header class="admin-header">
+    <div class="brand"><small>LODIDENTRO PRESENTA</small><strong>SAN<span>FEST.</span></strong><p>Gestione attività e bancarelle</p></div>
+    <div class="header-actions">
+      <a class="btn btn-light" href="index.html?anteprima=1" target="_blank" rel="noopener">👁 Anteprima visitatori</a>
+      <button type="button" id="btn-importa" class="btn btn-outline">Importa JSON</button>
+      <input id="file-importa" type="file" accept="application/json,.json" hidden>
+      <button type="button" id="btn-esporta" class="btn btn-gold">⬇ Pubblica: esporta JSON</button>
+    </div>
+  </header>
+  <div class="workspace">
+    <aside class="sidebar">
+      <div class="sidebar-head"><div><h1>Le attività</h1><p>Gestisci gli stand del SanFest</p></div><span id="conteggio" class="count">0</span></div>
+      <button type="button" id="btn-aggiungi" class="btn btn-primary btn-full">＋ Aggiungi attività</button>
+      <label class="sr-only" for="ricerca-admin">Cerca attività</label>
+      <input id="ricerca-admin" class="field" placeholder="Cerca nome o categoria..." type="search">
+      <div class="hint" id="messaggio">Premi “Aggiungi attività”, poi scegli la posizione sulla mappa.</div>
+      <div id="lista-attivita" class="activity-list" aria-live="polite"></div>
+      <div class="sidebar-foot">I dati si salvano nel browser. Per aggiornare il sito pubblico, esporta il JSON.</div>
+    </aside>
+    <main class="map-area"><div id="map" aria-label="Mappa Leaflet per posizionare attività"></div><div class="map-caption">📍 Viale Pavia, Lodi · Leaflet</div></main>
+  </div>
+
+  <div id="modal" class="modal-backdrop" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="titolo-modal">
+      <div class="modal-head"><div><small>GESTIONE SANFEST</small><h2 id="titolo-modal">Nuova attività</h2></div><button type="button" id="chiudi-modal" class="close" aria-label="Chiudi">✕</button></div>
+      <form id="form-attivita">
+        <div class="form-grid">
+          <div class="full"><label for="campo-nome">Nome attività *</label><input id="campo-nome" required maxlength="100" placeholder="Es. Bar Centrale"></div>
+          <div><label for="campo-categoria">Categoria</label><select id="campo-categoria"><option>Bar</option><option>Bancarella</option><option>Street Food</option><option>Musica</option><option>Attività</option><option>Servizi</option></select></div>
+          <div><label for="campo-piano">Visibilità sulla mappa</label><select id="campo-piano"><option value="base">Base · Scheda essenziale</option><option value="plus">Plus · 1 foto</option><option value="premium">Premium · fino a 3 foto</option></select></div>
+          <div class="full"><label for="campo-descrizione">Descrizione</label><textarea id="campo-descrizione" rows="3" maxlength="1200" placeholder="Cosa troveranno i visitatori?"></textarea><small id="consiglio-piano" class="helper">Base: mostra fino a 120 caratteri.</small></div>
+          <div><label for="campo-orari">Orari</label><input id="campo-orari" maxlength="80" placeholder="Es. 18:00–01:00"></div>
+          <div><label for="campo-instagram">Instagram (link)</label><input id="campo-instagram" type="url" placeholder="https://instagram.com/..."></div>
+          <div class="full"><label for="campo-sito">Sito web (link)</label><input id="campo-sito" type="url" placeholder="https://esempio.it"></div>
+          <div class="full"><label for="campo-foto">Foto — un URL o percorso per riga</label><textarea id="campo-foto" rows="3" placeholder="images/bar-centrale.jpg&#10;images/cocktail.jpg"></textarea><small class="helper">Metti le immagini nella cartella <code>images/</code>. Plus mostra 1 foto, Premium fino a 3. Base non mostra foto.</small></div>
+        </div>
+        <div class="form-actions"><button type="button" id="annulla-modal" class="btn btn-ghost">Annulla</button><button class="btn btn-primary" type="submit">Salva attività</button></div>
+      </form>
+    </section>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

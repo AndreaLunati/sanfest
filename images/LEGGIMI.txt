@@ -1,0 +1,3 @@
+Inserisci qui foto in formato JPG, PNG o WEBP, per esempio bar-centrale.jpg.
+Nel campo Foto del pannello organizzatori scrivi images/bar-centrale.jpg
+Inserisci qui solo foto che hai il diritto di pubblicare.

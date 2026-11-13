@@ -1,0 +1,448 @@
+
+/* ==============================
+   1. IMPOSTAZIONI GENERALI
+============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --rosso: #932927;
+    --rosso-scuro: #711e1c;
+    --crema: #faf5ed;
+    --testo: #302722;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    background: var(--crema);
+}
+
+
+/* ==============================
+   2. MAPPA A TUTTO SCHERMO
+============================== */
+
+main {
+    position: absolute;
+    inset: 0;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    background: #e9e5df;
+}
+
+
+/* ==============================
+   3. PANNELLO SANFEST
+============================== */
+
+header {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    z-index: 1000;
+
+    width: 370px;
+    max-width: calc(100% - 48px);
+
+    padding: 26px;
+
+    background: var(--rosso);
+    color: white;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 15px 45px rgba(45, 18, 15, 0.22);
+}
+
+/* Etichetta superiore */
+
+header::before {
+    content: "LODIDENTRO PRESENTA";
+    display: block;
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+
+    color: #f4c6a7;
+    margin-bottom: 10px;
+}
+
+/* Logo */
+
+header h1 {
+    font-size: 42px;
+    font-weight: 900;
+    letter-spacing: -2px;
+    line-height: 1;
+}
+
+header p {
+    margin-top: 9px;
+    font-size: 13px;
+    color: #f5dfd7;
+}
+
+
+/* ==============================
+   4. CONTROLLI ATTIVITÀ
+============================== */
+
+.controlli {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.controlli select {
+    flex: 1;
+    min-width: 0;
+
+    padding: 13px;
+    border: 1px solid #e9ded4;
+    border-radius: 11px;
+
+    background: white;
+    color: var(--testo);
+
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.controlli button {
+    padding: 13px 15px;
+
+    border: none;
+    border-radius: 11px;
+
+    background: #f2ce91;
+    color: #52231d;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.controlli button:hover {
+    background: white;
+    transform: translateY(-2px);
+}
+
+
+/* ==============================
+   5. SEGNAPOSTO PERSONALIZZATO
+============================== */
+
+.icona-attivita {
+    width: 36px !important;
+    height: 36px !important;
+
+    background: white;
+    border: 2px solid var(--rosso);
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 19px;
+
+    box-shadow:
+        0 4px 14px rgba(0, 0, 0, 0.25);
+
+    transition: transform 0.2s;
+}
+
+.icona-attivita:hover {
+    transform: scale(1.15);
+}
+
+
+/* ==============================
+   6. POPUP LEAFLET
+============================== */
+
+.leaflet-popup-content-wrapper {
+    border-radius: 15px;
+    padding: 5px;
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.18);
+}
+
+.leaflet-popup-content {
+    min-width: 155px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 13px;
+}
+
+.leaflet-popup-content strong {
+    display: block;
+    font-size: 16px;
+    color: var(--testo);
+}
+
+.leaflet-popup-content p {
+    margin: 8px 0;
+    color: #81736a;
+}
+
+
+/* ==============================
+   7. PULSANTE ELIMINA
+============================== */
+
+.pulsante-elimina {
+    width: 100%;
+
+    padding: 10px;
+    margin-top: 12px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #f9e9e7;
+    color: var(--rosso);
+
+    font-weight: 700;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.pulsante-elimina:hover {
+    background: var(--rosso);
+    color: white;
+}
+
+
+/* ==============================
+   8. CONTROLLI ZOOM
+============================== */
+
+.leaflet-control-zoom {
+    border: none !important;
+    box-shadow: 0 5px 20px #0002 !important;
+}
+
+.leaflet-control-zoom a {
+    background: white !important;
+    color: var(--rosso) !important;
+}
+
+
+/* ==============================
+   9. VERSIONE SMARTPHONE
+============================== */
+
+@media (max-width: 600px) {
+
+    header {
+        top: 12px;
+        left: 12px;
+
+        width: calc(100% - 24px);
+        max-width: none;
+
+        padding: 18px;
+        border-radius: 15px;
+    }
+
+    header h1 {
+        font-size: 31px;
+    }
+
+    header p {
+        font-size: 11px;
+    }
+
+    .controlli {
+        margin-top: 15px;
+        gap: 8px;
+    }
+
+    .controlli select,
+    .controlli button {
+        padding: 11px 9px;
+        font-size: 11px;
+    }
+}
+
+
+
+
+/* ==============================
+   MODALE ATTIVITÀ
+============================== */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 16px;
+    background: rgba(25, 15, 12, 0.6);
+    backdrop-filter: blur(4px);
+}
+
+.modal-overlay[hidden] {
+    display: none;
+}
+
+.modal-box {
+    width: 100%;
+    max-width: 460px;
+    max-height: calc(100dvh - 32px);
+    overflow-y: auto;
+
+    background: #fffaf5;
+    border-radius: 20px;
+    padding: 26px;
+
+    box-shadow: 0 20px 60px #0003;
+}
+
+.modal-kicker {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #932927;
+}
+
+.modal-box h2 {
+    margin: 8px 0 20px;
+    font-size: 25px;
+    color: #302722;
+}
+
+.modal-box label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    margin: 14px 0 7px;
+    color: #54463e;
+}
+
+.modal-box input,
+.modal-box select,
+.modal-box textarea {
+    width: 100%;
+    padding: 12px;
+
+    border: 1px solid #e4d8cd;
+    border-radius: 10px;
+
+    background: white;
+    color: #302722;
+    font-size: 13px;
+    font-family: inherit;
+
+    outline-color: #932927;
+}
+
+.modal-box textarea {
+    resize: vertical;
+}
+
+.azioni-modal {
+    display: flex;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.azioni-modal button {
+    flex: 1;
+    padding: 13px 10px;
+
+    border: 0;
+    border-radius: 10px;
+
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.btn-annulla {
+    background: #eee8e2;
+    color: #493c35;
+}
+
+.btn-salva {
+    background: #932927;
+    color: white;
+}
+
+/* ==============================
+   POPUP DELLE ATTIVITÀ
+============================== */
+
+.scheda-attivita {
+    width: 230px;
+    max-width: 100%;
+    font-family: inherit;
+}
+
+.scheda-categoria {
+    font-size: 11px;
+    color: #932927;
+    font-weight: 800;
+    margin-bottom: 7px;
+}
+
+.scheda-attivita h3 {
+    font-size: 17px;
+    color: #302722;
+    margin-bottom: 9px;
+}
+
+.scheda-attivita p {
+    font-size: 12px;
+    line-height: 1.5;
+    color: #756b63;
+    margin: 7px 0;
+}
+
+.azioni-scheda {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 5px;
+    margin-top: 15px;
+}
+
+.azioni-scheda button {
+    padding: 9px 4px;
+    border: 0;
+    border-radius: 7px;
+
+    background: #f1ebe5;
+    color: #4e3e36;
+
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.azioni-scheda button:hover {
+    background: #e6d8cc;
+}
+
+.azioni-scheda .azione-pericolo {
+    background: #f8e6e4;
+    color: #932927;
+}
